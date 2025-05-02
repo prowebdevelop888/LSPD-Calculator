@@ -1,0 +1,185 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    background-image: url('images/LSPD_background.webp'); /* Đặt đường dẫn đúng đến ảnh */
+    background-size: cover; /* Đảm bảo ảnh phủ đầy toàn bộ màn hình */
+    background-position: center center; /* Canh giữa ảnh */
+    background-attachment: fixed; /* Giữ ảnh nền cố định khi cuộn trang */
+    opacity: 0.8; /* Làm mờ ảnh nền */
+}
+
+/* Lớp phủ mờ để giúp chữ nổi bật hơn */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Lớp nền mờ */
+    z-index: -1; /* Đảm bảo lớp phủ không che các phần tử khác */
+}
+
+/* Tăng độ đậm của chữ */
+h2, h3, .summary p {
+    font-weight: 700; /* Làm chữ đậm hơn */
+}
+
+/* Center the content */
+h2 {
+    text-align: center;
+    color: #003366; /* Màu xanh đậm */
+    margin: 30px 0;
+    background-image: url('images/logo.png'); /* Ví dụ: thêm logo vào tiêu đề */
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 40px;
+}
+
+/* Đảm bảo các phần tử trong content có chữ đậm */
+.content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-weight: 700; /* Làm chữ trong content đậm hơn */
+}
+
+/* Checkbox styling */
+.checkbox-group label:hover {
+    background-color: #e0e0e0;  /* Thay đổi màu nền khi hover */
+    cursor: pointer;
+    transition: background-color 0.3s ease;  /* Hiệu ứng chuyển màu nền */
+}
+
+/* Button styling */
+.button {
+    background-color: #003366;
+    color: white;
+    padding: 12px 18px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: 700; /* Đảm bảo chữ trong nút bấm đậm */
+}
+
+.button:hover {
+    background-color: #0059b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Tăng độ bóng khi hover */
+}
+
+/* Total minutes display with bounce effect */
+#totalMinutes {
+    font-weight: bold;
+    font-size: 1.4em;
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 20px;
+    animation: bounce 1s ease-in-out; /* Thêm hiệu ứng nhảy */
+}
+
+/* Keyframes for bounce effect */
+@keyframes bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+    }
+
+    .button {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    #totalMinutes {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+}
+
+/* Phần phản hồi */
+.feedback-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e9eff3;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-section h3 {
+    font-weight: 700;
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.feedback-section label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.feedback-section textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.feedback-section button {
+    background-color: #003366;
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-section button:hover {
+    background-color: #0059b3;
+}
+
+#thankYouMessage {
+    font-size: 16px;
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

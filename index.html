@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    
+
+
+    <link rel="stylesheet" href="style.css">
+
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            color: #003366; /* Màu xanh đậm */
+        }
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .checkbox-group {
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .checkbox-group label {
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .violation-count {
+            width: 60px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        #totalMinutes {
+            font-weight: bold;
+            font-size: 1.4em;
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .summary {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .summary p {
+            font-size: 16px;
+        }
+        .button {
+            background-color: #003366;
+            color: white;
+            padding: 10px 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0059b3;
+        }
+    </style>
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Tổng Số Phút Phạt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .checkbox-group {
+            margin-bottom: 10px;
+        }
+        #totalMinutes {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .summary {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .violation-count {
+            margin-left: 10px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <form id="penaltyForm">
+            <!-- Mức độ 1 -->
+            <h3>Mức độ 1: Vi phạm ít nghiêm trọng</h3>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="20">
+                    Cản trở người thi hành công vụ - Phạt 20 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="20">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="20">
+                    Hỗ trợ đồng bọn, trợ giúp tội phạm - Phạt 20 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="20">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="20">
+                    Không giao nộp hung khí đã gây án - Phạt 20 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="20">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="20">
+                    Tàng trữ hoặc sử dụng vật phẩm trái phép tại nơi công cộng (Giáp) - Phạt 20 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="20">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="20">
+                    Giả dạng, tự xưng là người Nhà nước - Phạt 20 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="20">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="20">
+                    Gây rối trật tự nơi công cộng, gây ảnh hưởng đến cá nhân hay tập thể - Phạt 20 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="20">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="20">
+                    Trộm cắp bất hợp pháp với nhà công dân - Phạt 20 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="20">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="20">
+                    Phá hoại tài sản nhà nước - Phạt 20 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="20">
+                </label>
+            </div>
+
+            <!-- Mức độ 2 -->
+            <h3>Mức độ 2: Vi phạm nghiêm trọng</h3>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Nhập cư trái phép - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Tàng trữ chất cấm trái phép - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Vu khống người khác - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Xúc phạm đến danh dự, nhân phẩm của người khác - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Tàng trữ vũ khí trái phép - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Sử dụng vũ khí trái phép - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Sử dụng vũ khí nơi công cộng - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Gây rối trong khu vực trụ sở cơ quan nhà nước - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Tấn công gây thương tích chưa nghiêm trọng - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Chống đối người thi hành công vụ - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="30">
+                    Xâm nhập trụ sở, nơi làm việc thuộc Ban ngành Nhà nước - Phạt 30 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="30">
+                </label>
+            </div>
+
+            <!-- Mức độ 3 -->
+            <h3>Mức độ 3: Vi phạm cực kỳ nghiêm trọng</h3>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="60">
+                    Tấn công gây thương tích nghiêm trọng cho người khác - Phạt 60 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="60">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="60">
+                    Tấn công sĩ quan Cảnh sát - Phạt 60 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="60">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="60">
+                    Rao bán, hỏi mua, thực hiện giao dịch mua bán vũ khí trái phép - Phạt 60 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="60">
+                </label>
+            </div>
+
+            <!-- Mức độ 4 -->
+            <h3>Mức độ 4: Vi phạm đặc biệt nghiêm trọng</h3>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="120">
+                    Tấn công Cán bộ Cấp cao - Phạt 120 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="120">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="120">
+                    Tấn công Nhân viên y tế - Phạt 120 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="120">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="120">
+                    Có lời nói, hành động đe doạ xúc phạm nhân viên Chính Phủ - Phạt 120 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="120">
+                </label>
+            </div>
+
+            <!-- Mức độ 5 -->
+            <h3>Mức độ 5: Tội phạm nguy hiểm cấp độ 5</h3>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="200">
+                    Bạo Loạn - Phạt 200 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="200">
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="200">
+                    Tấn công trụ sở, nơi làm việc thuộc Ban ngành Nhà nước - Phạt 200 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="200">
+                </label>
+            </div>
+
+            <!-- Mức độ 6 -->
+            <h3>Mức độ 6: Tội phạm đặc biệt nguy hiểm</h3>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" class="penalty" value="500">
+                    Tấn công Thống đốc - Phạt 500 phút
+                    <input type="number" class="violation-count" value="1" min="1" data-penalty="500">
+                </label>
+            </div>
+
+              <!-- Tổng kết -->
+              <div id="totalMinutes">
+                Tổng số phút phạt: <span id="total">0</span> phút
+            </div>
+        </form>
+
+        <div class="summary">
+            <h3>Thông tin xử lý:</h3>
+            <p>Tên: <span id="name"></span></p>
+            <p>CCCD: <span id="cccd"></span></p>
+            <p>Tội Danh: <span id="offenses"></span></p>
+            <p>Mức Án: <span id="sentence"></span></p>
+            <button class="button" id="submitButton">Hoàn thành xử lý</button>
+        </div>
+    </div>
+
+
+    <script>
+        // JavaScript để xử lý phản hồi người dùng
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngừng hành động mặc định của form
+
+            const feedback = document.getElementById('feedback').value;
+            
+            if (feedback.trim() !== "") {
+                // Nếu có phản hồi, hiển thị thông báo cảm ơn
+                document.getElementById('thankYouMessage').style.display = "block";
+                document.getElementById('feedback').value = "";  // Làm trống ô nhập liệu
+
+                // Tại đây, bạn có thể thêm mã để gửi phản hồi đến máy chủ hoặc lưu trữ
+                console.log("Phản hồi đã được gửi:", feedback);
+            } else {
+                alert("Vui lòng nhập phản hồi trước khi gửi.");
+            }
+        });
+    </script>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.penalty');
+        const totalDisplay = document.getElementById('total');
+        const offensesDisplay = document.getElementById('offenses');
+        const sentenceDisplay = document.getElementById('sentence');
+        const violationCounts = document.querySelectorAll('.violation-count');
+    
+        // Tạo đối tượng để lưu trữ số lần vi phạm của mỗi tội danh
+        let offenseCounts = {};
+    
+        // Thêm sự kiện cho checkbox và trường nhập liệu
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSummary);
+        });
+    
+        violationCounts.forEach(countInput => {
+            countInput.addEventListener('input', updateSummary);
+        });
+    
+        function updateSummary() {
+            let totalMinutes = 0;
+            let selectedOffenses = [];
+    
+            // Reset đối tượng vi phạm
+            offenseCounts = {};
+    
+            checkboxes.forEach((checkbox, index) => {
+                if (checkbox.checked) {
+                    const violationCount = violationCounts[index].value || 1; // Số lần vi phạm
+                    const penalty = parseInt(checkbox.value) * violationCount; // Tổng số phút phạt
+                    totalMinutes += penalty;
+    
+                    // Lấy tên tội danh và lưu vào đối tượng offenseCounts
+                    const offenseName = checkbox.parentElement.textContent.trim().split(" - ")[0];
+                    if (offenseCounts[offenseName]) {
+                        offenseCounts[offenseName] += parseInt(violationCount);
+                    } else {
+                        offenseCounts[offenseName] = parseInt(violationCount);
+                    }
+                }
+            });
+    
+            // Cập nhật danh sách tội danh và số lần vi phạm
+            selectedOffenses = Object.keys(offenseCounts).map(offense => {
+                const count = offenseCounts[offense];
+                return count > 1 ? `${offense} (x${count})` : offense;
+            });
+    
+            // Hiển thị thông tin trong phần "Thông tin xử lý"
+            totalDisplay.textContent = totalMinutes;
+            offensesDisplay.textContent = selectedOffenses.join(", ");
+            sentenceDisplay.textContent = totalMinutes;
+        }
+    
+        // Xử lý sự kiện khi bấm nút "Hoàn thành xử lý"
+        document.getElementById('submitButton').addEventListener('click', function() {
+            // Tắt hết tất cả các checkbox đã chọn
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            // Cập nhật lại tổng số phút phạt và thông tin
+            updateSummary();
+        });
+
+        document.getElementById('submitButton').classList.add('fade-in');
+    </script>
+
+</body>
+</html>
